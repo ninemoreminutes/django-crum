@@ -73,6 +73,9 @@ setup(
         'upload_sphinx': {
             'upload_dir': 'docs/_build/html',
         },
+        'upload_docs': {
+            'upload_dir': 'docs/_build/html',
+        },
         'aliases': {
             'dev_build': 'egg_info sdist build_sphinx',
             'release_build': 'egg_info -b "" -R sdist build_sphinx',
