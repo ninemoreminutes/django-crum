@@ -4,7 +4,7 @@ import threading
 
 _thread_locals = threading.local()
 
-__version__ = '0.5'
+__version__ = '0.5.1'
 
 __all__ = ['get_current_request', 'get_current_user', 'impersonate']
 

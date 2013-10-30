@@ -14,11 +14,18 @@ tests_require = [
     'Django',
     'django-hotrunner>=0.2.2',
     'django-setuptest>=0.1.4',
+    'djangorestframework',
 ]
 try:
     import argparse
 except ImportError:
     tests_require.append('argparse')
+
+extra = {}
+if sys.version_info >= (3,):
+    extra['use_2to3'] = True
+    #extra['convert_2to3_doctests'] = ['src/your/module/README.txt']
+    #extra['use_2to3_fixers'] = ['your.fixers']
 
 setup(
     name='django-crum',
@@ -26,8 +33,8 @@ setup(
     author='Nine More Minutes, Inc.',
     author_email='support@ninemoreminutes.com',
     description='Django middleware to capture current request and user.',
-    long_description=file(os.path.join(os.path.dirname(__file__), 'README'),
-                          'rb').read(),
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README'),
+                          'rb').read().decode('utf-8'),
     license='BSD',
     keywords='django request user middleware thread local',
     url='https://projects.ninemoreminutes.com/projects/django-crum/',
@@ -35,7 +42,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'Django>=1.3',
+        'Django>=1.4',
     ],
     setup_requires=[],
     tests_require=tests_require,
@@ -71,4 +78,5 @@ setup(
             'release_build': 'egg_info -b "" -R sdist build_sphinx',
         },
     },
+    **extra
 )

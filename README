@@ -9,4 +9,5 @@ the current request and user without requiring the request object to be passed
 directly. It also offers a context manager to allow for temporarily
 impersonating another user.
 
-It is tested against Python 2.6 and 2.7 using Django 1.4, 1.5 and 1.6.
+It is tested against Python 2.6, 2.7, 3.2 and 3.3 using Django 1.4, 1.5 and
+1.6.
