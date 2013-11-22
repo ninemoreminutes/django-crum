@@ -1,13 +1,13 @@
 # PIP Requirements (for a development/build/test environment, Python 2.7).
 coverage==3.7
 distribute==0.7.3
-django-debug-toolbar==0.10.2
+django-debug-toolbar==0.11.0
 django-devserver==0.7.0
 django-extensions==1.2.5
 django-hotrunner==0.2.2
 django-setuptest==0.1.4
-Django==1.5.5
-djangorestframework==2.3.8
+Django==1.6
+djangorestframework==2.3.9
 docutils==0.11
 ipython==1.1.0
 Jinja2==2.7.1
@@ -19,6 +19,6 @@ Pygments==1.6
 readline==6.2.4.1
 six==1.4.1
 Sphinx==1.2b3
-sqlparse==0.1.9
+sqlparse==0.1.10
 tox==1.6.1
 virtualenv==1.10.1

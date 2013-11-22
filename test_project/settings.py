@@ -74,23 +74,21 @@ try:
     import debug_toolbar
     INSTALLED_APPS += ('debug_toolbar',)
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }
 except ImportError:
     pass
 
 try:
     import devserver
     INSTALLED_APPS += ('devserver',)
+    DEVSERVER_DEFAULT_ADDR = '127.0.0.1'
+    DEVSERVER_DEFAULT_PORT = '8034'
 except ImportError:
     pass
 
 INTERNAL_IPS = ('127.0.0.1',)
-
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-}
-
-DEVSERVER_DEFAULT_ADDR = '127.0.0.1'
-DEVSERVER_DEFAULT_PORT = '8034'
 
 TEST_RUNNER = 'hotrunner.HotRunner'
 

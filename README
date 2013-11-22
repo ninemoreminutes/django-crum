@@ -9,5 +9,12 @@ the current request and user without requiring the request object to be passed
 directly. It also offers a context manager to allow for temporarily
 impersonating another user.
 
-It is tested against Python 2.6, 2.7, 3.2 and 3.3 using Django 1.4, 1.5 and
-1.6.
+It provides a signal to extend the built-in function for getting the current
+user, which could be helpful when using custom authentication methods or user
+models.
+
+It is tested against:
+ * Django 1.4.10 (Python 2.6 and 2.7)
+ * Django 1.5.5 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django 1.6 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django master (Python 2.7, 3.2 and 3.3)

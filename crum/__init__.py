@@ -1,10 +1,13 @@
 # Python
 import contextlib
+import logging
 import threading
 
 _thread_locals = threading.local()
 
-__version__ = '0.5.1'
+_logger = logging.getLogger('crum')
+
+__version__ = '0.6.0'
 
 __all__ = ['get_current_request', 'get_current_user', 'impersonate']
 
@@ -13,7 +16,7 @@ __all__ = ['get_current_request', 'get_current_user', 'impersonate']
 def impersonate(user=None):
     """Temporarily impersonate the given user for audit trails."""
     try:
-        current_user = get_current_user()
+        current_user = get_current_user(_return_false=True)
         set_current_user(user)
         yield user
     finally:
@@ -30,22 +33,44 @@ def set_current_request(request=None):
     _thread_locals.request = request
     # Clear the current user if also clearing the request.
     if not request:
-        _thread_locals.user = None
+        set_current_user(False)
 
 
-def get_current_user():
+def get_current_user(_return_false=False):
     """Return the user associated with the current request thread."""
-    return getattr(get_current_request(), 'user',
-                   getattr(_thread_locals, 'user', None))
+    from crum.signals import current_user_getter
+    top_priority = -9999
+    top_user = False if _return_false else None
+    results = current_user_getter.send_robust(get_current_user)
+    for receiver, response in results:
+        priority = 0
+        if isinstance(response, Exception):
+            _logger.exception('%r raised exception: %s', receiver, response)
+            continue
+        elif isinstance(response, (tuple, list)) and response:
+            user = response[0]
+            if len(response) > 1:
+                priority = response[1]
+        elif response or response in (None, False):
+            user = response
+        else:
+            _logger.error('%r returned invalid response: %r', receiver,
+                          response)
+            continue
+        if user is not False:
+            if priority > top_priority:
+                top_priority = priority
+                top_user = user
+    return top_user
 
 
 def set_current_user(user=None):
     """Update the user associated with the current request thread."""
-    request = get_current_request()
-    if request:
-        request.user = user
-    # Allow impersonate to work without a request.
-    _thread_locals.user = user
+    from crum.signals import current_user_setter
+    results = current_user_setter.send_robust(set_current_user, user=user)
+    for receiver, response in results:
+        if isinstance(response, Exception):
+            _logger.exception('%r raised exception: %s', receiver, response)
 
 
 class CurrentRequestUserMiddleware(object):

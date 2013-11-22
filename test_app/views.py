@@ -32,6 +32,13 @@ index = IndexView.as_view()
 
 class ApiIndexView(APIView):
 
+    def initialize_request(self, request, *args, **kwargs):
+        """Store the REST Framework request on the Django request."""
+        req = super(ApiIndexView, self).initialize_request(request, *args,
+                                                           **kwargs)
+        request.drf_request = req
+        return req
+
     def get(self, request, format=None):
         if request.QUERY_PARAMS.get('raise', ''):
             raise RuntimeError()

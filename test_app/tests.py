@@ -1,11 +1,13 @@
 # Python
 from __future__ import with_statement
 from __future__ import unicode_literals
+import base64
 import imp
 import json
 
 # Django
 from django.test import TestCase
+from django.test.client import Client
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.utils import six
@@ -72,10 +74,21 @@ class TestCRUM(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response_content, six.text_type('AnonymousUser'))
         self.assertEqual(get_current_user(), None)
-        # Test logged in user.
+        # Test logged in user (session auth).
         self.client.login(username=self.user.username,
                           password=self.user_password)
         response = self.client.get(url)
+        response_content = json.loads(response.content.decode('utf-8'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response_content, six.text_type(self.user))
+        self.assertEqual(get_current_user(), None)
+        # Test logged in user (basic auth).
+        basic_auth = '{0}:{1}'.format(self.user.username, self.user_password)
+        basic_auth = six.binary_type(basic_auth.encode('utf-8'))
+        basic_auth = base64.b64encode(basic_auth).decode('ascii')
+        client_kwargs = {'HTTP_AUTHORIZATION': 'Basic %s' % basic_auth}
+        client = Client(**client_kwargs)
+        response = client.get(url)
         response_content = json.loads(response.content.decode('utf-8'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response_content, six.text_type(self.user))

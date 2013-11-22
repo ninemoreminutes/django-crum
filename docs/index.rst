@@ -14,8 +14,15 @@ the current request and user without requiring the request object to be passed
 directly. It also offers a context manager to allow for temporarily
 impersonating another user.
 
-It is tested against Python 2.6, 2.7, 3.2 and 3.3 using Django 1.4, 1.5 and
-1.6.
+It provides a signal to extend the built-in function for getting the current
+user, which could be helpful when using custom authentication methods or user
+models.
+
+It is tested against:
+ * Django 1.4.10 (Python 2.6 and 2.7)
+ * Django 1.5.5 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django 1.6 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django master (Python 2.7, 3.2 and 3.3)
 
 Installation
 ------------
@@ -124,3 +131,44 @@ actions from being attributed to the requesting user::
         my_things = Thing.objects.filter(created_by=request.user)
         return TemplateResponse(request, 'my_things.html',
                                 {'things': my_things})
+
+Signals
+-------
+
+(New in 0.6.0) The `crum` package provides a signal to extend the capabilities
+of the `get_current_user()` function.
+
+current_user_getter
+~~~~~~~~~~~~~~~~~~~
+
+The ``current_user_getter`` signal is dispatched for each call to
+``get_current_user()``.  Receivers for this signal should return a tuple of
+``(user, priority)``.  Receivers should return ``None`` for the user when there
+is no current user set, or ``False`` when they can not determine the current
+user.
+
+The priority value which will be used to determine which response contains the
+current user.  The response with the highest priority will be used as long as
+the user returned is not ``False``, otherwise lower-priority responses will
+be used in order of next-highest priority.  Built-in receivers for this signal
+use priorities of -10 (current request) and +10 (thread locals); any custom
+receivers should usually use -10 < priority < 10.
+
+The following example demonstrates how a custom receiver could be implemented
+to determine the current user from an auth token passed via an HTTP header::
+
+    from django.dispatch import receiver
+    from crum import get_current_request
+    from crum.signals import current_user_getter
+
+    @receiver(current_user_getter)
+    def (sender, **kwargs):
+        request = get_current_request()
+        if request:
+            token = request.META.get('HTTP_AUTH_TOKEN', None)
+            try:
+                auth_token = AuthToken.objects.get(token=token)
+                return (auth_token.user, 0)
+            except AuthToken.DoesNotExist:
+                return (None, 0)
+        return (False, 0)
