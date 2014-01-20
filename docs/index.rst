@@ -21,7 +21,7 @@ models.
 It is tested against:
  * Django 1.4.10 (Python 2.6 and 2.7)
  * Django 1.5.5 (Python 2.6, 2.7, 3.2 and 3.3)
- * Django 1.6 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django 1.6.1 (Python 2.6, 2.7, 3.2 and 3.3)
  * Django master (Python 2.7, 3.2 and 3.3)
 
 Installation
@@ -106,7 +106,7 @@ user as returned by ``get_current_user``.  It is typically used to perform an
 action on behalf of a user or disable the default behavior of
 ``get_current_user``.
 
-For example, a background task may need to create or update ``Things`` objects
+For example, a background task may need to create or update ``Thing`` objects
 when there is no active request or user (such as from a management command)::
 
     from crum import impersonate
