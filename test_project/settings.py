@@ -90,6 +90,65 @@ except ImportError:
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-TEST_RUNNER = 'hotrunner.HotRunner'
+#TEST_RUNNER = 'hotrunner.HotRunner'
 
 EXCLUDED_TEST_APPS = [x for x in INSTALLED_APPS if x != 'test_app']
+
+# Add NullHandler for Python 2.6.
+import logging
+try:
+    logging.NullHandler
+except AttributeError:
+    class NullHandler(logging.Handler):
+        def emit(self, record):
+            pass
+    logging.NullHandler = NullHandler
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        #'require_debug_true': {
+        #    '()': 'django.utils.log.RequireDebugTrue',
+        #},
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            #'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'null': {
+            'class': 'logging.NullHandler',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django.security': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'py.warnings': {
+            'handlers': ['console'],
+        },
+        'crum': {
+            'handlers': ['null'],
+        },
+    },
+}

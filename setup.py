@@ -33,7 +33,7 @@ setup(
     author='Nine More Minutes, Inc.',
     author_email='support@ninemoreminutes.com',
     description='Django middleware to capture current request and user.',
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README'),
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md'),
                           'rb').read().decode('utf-8'),
     license='BSD',
     keywords='django request user middleware thread local',

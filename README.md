@@ -17,6 +17,7 @@ It is tested against:
  * Django 1.4.10 (Python 2.6 and 2.7)
  * Django 1.5.5 (Python 2.6, 2.7, 3.2 and 3.3)
  * Django 1.6.1 (Python 2.6, 2.7, 3.2 and 3.3)
+ * Django 1.7b1 (Python 2.7, 3.2 and 3.3)
  * Django master (Python 2.7, 3.2 and 3.3)
 
 [![Build Status](https://travis-ci.org/ninemoreminutes/django-crum.svg?branch=master)](https://travis-ci.org/ninemoreminutes/django-crum)
