@@ -1,3 +1,8 @@
+[![PyPI](https://img.shields.io/pypi/v/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
+[![PyPI](https://img.shields.io/pypi/l/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
+[![PyPI](https://img.shields.io/pypi/pyversions/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
+[![Build Status](http://img.shields.io/travis/ninemoreminutes/django-crum.svg)](https://travis-ci.org/ninemoreminutes/django-crum)
+
 Django-CRUM
 ===========
 
@@ -18,5 +23,3 @@ It is tested against:
  * Django 1.9 (Python 2.7, 3.4 and 3.5)
  * Django 1.10 (Python 2.7, 3.4 and 3.5)
  * Django master (Python 2.7, 3.4 and 3.5)
-
-[![Build Status](https://travis-ci.org/ninemoreminutes/django-crum.svg?branch=master)](https://travis-ci.org/ninemoreminutes/django-crum)
