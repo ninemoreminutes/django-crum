@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from django.utils import six
 
 # Django-CRUM
-from crum import *
+from crum import get_current_user, impersonate
 
 
 class TestCRUM(TestCase):

@@ -3,6 +3,7 @@ import os
 import sys
 
 # Django
+import django
 from django.conf import global_settings
 
 # Update this module's local settings from the global settings module.
@@ -42,9 +43,29 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
 
-MIDDLEWARE_CLASSES += (
-    'crum.CurrentRequestUserMiddleware',
-)
+if django.VERSION >= (1, 10):
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'crum.CurrentRequestUserMiddleware',
+    ]
+else:
+    MIDDLEWARE_CLASSES = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'crum.CurrentRequestUserMiddleware',
+    ]
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
@@ -61,17 +82,17 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'rest_framework',
-    'test_app',
+    'test_project.test_app',
 )
 
 try:
-    import django_extensions
+    import django_extensions  # noqa
     INSTALLED_APPS += ('django_extensions',)
 except ImportError:
     pass
 
 try:
-    import debug_toolbar
+    import debug_toolbar  # noqa
     INSTALLED_APPS += ('debug_toolbar',)
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     DEBUG_TOOLBAR_CONFIG = {
@@ -80,29 +101,10 @@ try:
 except ImportError:
     pass
 
-try:
-    import devserver
-    INSTALLED_APPS += ('devserver',)
-    DEVSERVER_DEFAULT_ADDR = '127.0.0.1'
-    DEVSERVER_DEFAULT_PORT = '8034'
-except ImportError:
-    pass
+RUNSERVER_DEFAULT_ADDR = '127.0.0.1'
+RUNSERVER_DEFAULT_PORT = '8034'
 
 INTERNAL_IPS = ('127.0.0.1',)
-
-#TEST_RUNNER = 'hotrunner.HotRunner'
-
-EXCLUDED_TEST_APPS = [x for x in INSTALLED_APPS if x != 'test_app']
-
-# Add NullHandler for Python 2.6.
-import logging
-try:
-    logging.NullHandler
-except AttributeError:
-    class NullHandler(logging.Handler):
-        def emit(self, record):
-            pass
-    logging.NullHandler = NullHandler
 
 LOGGING = {
     'version': 1,
@@ -111,14 +113,14 @@ LOGGING = {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse',
         },
-        #'require_debug_true': {
-        #    '()': 'django.utils.log.RequireDebugTrue',
-        #},
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
     },
     'handlers': {
         'console': {
             'level': 'INFO',
-            #'filters': ['require_debug_true'],
+            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
         },
         'null': {

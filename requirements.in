@@ -1,0 +1,14 @@
+django
+django-debug-toolbar
+django-extensions
+djangorestframework
+flake8
+ipython
+pip-tools
+pytest
+pytest-cov
+pytest-django
+pytest-flake8
+pytest-runner
+sphinx
+tox

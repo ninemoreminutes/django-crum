@@ -7,14 +7,16 @@ _thread_locals = threading.local()
 
 _logger = logging.getLogger('crum')
 
-__version__ = '0.6.1'
+__version__ = '0.7.0'
 
 __all__ = ['get_current_request', 'get_current_user', 'impersonate']
 
 
 @contextlib.contextmanager
 def impersonate(user=None):
-    """Temporarily impersonate the given user for audit trails."""
+    """
+    Temporarily impersonate the given user for audit trails.
+    """
     try:
         current_user = get_current_user(_return_false=True)
         set_current_user(user)
@@ -24,12 +26,16 @@ def impersonate(user=None):
 
 
 def get_current_request():
-    """Return the request associated with the current thread."""
+    """
+    Return the request associated with the current thread.
+    """
     return getattr(_thread_locals, 'request', None)
 
 
 def set_current_request(request=None):
-    """Update the request associated with the current thread."""
+    """
+    Update the request associated with the current thread.
+    """
     _thread_locals.request = request
     # Clear the current user if also clearing the request.
     if not request:
@@ -37,7 +43,9 @@ def set_current_request(request=None):
 
 
 def get_current_user(_return_false=False):
-    """Return the user associated with the current request thread."""
+    """
+    Return the user associated with the current request thread.
+    """
     from crum.signals import current_user_getter
     top_priority = -9999
     top_user = False if _return_false else None
@@ -65,7 +73,9 @@ def get_current_user(_return_false=False):
 
 
 def set_current_user(user=None):
-    """Update the user associated with the current request thread."""
+    """
+    Update the user associated with the current request thread.
+    """
     from crum.signals import current_user_setter
     results = current_user_setter.send_robust(set_current_user, user=user)
     for receiver, response in results:
@@ -74,7 +84,21 @@ def set_current_user(user=None):
 
 
 class CurrentRequestUserMiddleware(object):
-    """Middleware to capture the request and user from the current thread."""
+    """
+    Middleware to capture the request and user from the current thread.
+    """
+
+    def __init__(self, get_response=None):
+        self.get_response = get_response
+
+    def __call__(self, request):  # pragma: no cover
+        response = self.process_request(request)
+        try:
+            response = self.get_response(request)
+        except Exception as e:
+            self.process_exception(request, e)
+            raise
+        return self.process_response(request, response)
 
     def process_request(self, request):
         set_current_request(request)

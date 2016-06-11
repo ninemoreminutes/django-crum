@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Django-CRUM
-from crum import *
+from crum import get_current_user, impersonate
 
 
 class IndexView(View):
@@ -40,9 +40,9 @@ class ApiIndexView(APIView):
         return req
 
     def get(self, request, format=None):
-        if request.QUERY_PARAMS.get('raise', ''):
+        if request.query_params.get('raise', ''):
             raise RuntimeError()
-        if request.QUERY_PARAMS.get('impersonate', ''):
+        if request.query_params.get('impersonate', ''):
             with impersonate(None):
                 current_user = six.text_type(get_current_user())
         else:

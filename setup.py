@@ -10,17 +10,6 @@ from setuptools import setup, find_packages
 # Django-CRUM
 from crum import __version__
 
-tests_require = [
-    'Django',
-    'django-hotrunner>=0.2.2',
-    'django-setuptest>=0.1.4',
-    'djangorestframework',
-]
-try:
-    import argparse
-except ImportError:
-    tests_require.append('argparse')
-
 extra = {}
 if sys.version_info >= (3,):
     extra['use_2to3'] = True
@@ -38,15 +27,23 @@ setup(
     license='BSD',
     keywords='django request user middleware thread local',
     url='https://projects.ninemoreminutes.com/projects/django-crum/',
-    packages=find_packages(exclude=['test_project', 'test_app']),
+    packages=find_packages(exclude=['test_project']),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'Django>=1.4',
+        'django',
     ],
-    setup_requires=[],
-    tests_require=tests_require,
-    test_suite='test_suite.TestSuite',
+    setup_requires=[
+        'pytest-runner',
+    ],
+    tests_require=[
+        'django',
+        'djangorestframework',
+        'pytest',
+        'pytest-cov',
+        'pytest-django',
+        'pytest-flake8',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -79,6 +76,7 @@ setup(
         'aliases': {
             'dev_build': 'egg_info sdist build_sphinx',
             'release_build': 'egg_info -b "" -R sdist build_sphinx',
+            'test': 'pytest',
         },
     },
     **extra
