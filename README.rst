@@ -1,7 +1,4 @@
-[![PyPI](https://img.shields.io/pypi/v/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
-[![PyPI](https://img.shields.io/pypi/l/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
-[![PyPI](https://img.shields.io/pypi/pyversions/django-crum.svg)](https://pypi.python.org/pypi/django-crum/)
-[![Build Status](http://img.shields.io/travis/ninemoreminutes/django-crum.svg)](https://travis-ci.org/ninemoreminutes/django-crum)
+|Build Status| |PyPI Version| |PyPI License| |Python Versions|
 
 Django-CRUM
 ===========
@@ -23,3 +20,12 @@ It is tested against:
  * Django 1.9 (Python 2.7, 3.4 and 3.5)
  * Django 1.10 (Python 2.7, 3.4 and 3.5)
  * Django master (Python 2.7, 3.4 and 3.5)
+
+.. |Build Status| image:: http://img.shields.io/travis/ninemoreminutes/django-crum.svg
+   :target: https://travis-ci.org/ninemoreminutes/django-crum
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/django-crum.svg
+   :target: https://pypi.python.org/pypi/django-crum/
+.. |PyPI License| image:: https://img.shields.io/pypi/l/django-crum.svg
+   :target: https://pypi.python.org/pypi/django-crum/
+.. |Python Versions| image:: https://img.shields.io/pypi/pyversions/django-crum.svg
+   :target: https://pypi.python.org/pypi/django-crum/

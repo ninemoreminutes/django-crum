@@ -1,3 +1,4 @@
 recursive-include crum *.py
 include LICENSE
-include README.md
+include README.rst
+recursive-exclude test_project *
