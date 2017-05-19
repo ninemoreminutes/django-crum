@@ -94,7 +94,10 @@ except ImportError:
 try:
     import debug_toolbar  # noqa
     INSTALLED_APPS += ('debug_toolbar',)
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    if django.VERSION >= (1, 10):
+        MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    else:
+        MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False,
     }

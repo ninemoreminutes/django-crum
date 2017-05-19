@@ -27,6 +27,7 @@ class IndexView(View):
             current_user = six.text_type(get_current_user())
         return HttpResponse(current_user, content_type='text/plain')
 
+
 index = IndexView.as_view()
 
 
@@ -48,5 +49,6 @@ class ApiIndexView(APIView):
         else:
             current_user = six.text_type(get_current_user())
         return Response(current_user)
+
 
 api_index = ApiIndexView.as_view()

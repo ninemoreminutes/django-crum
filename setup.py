@@ -13,8 +13,8 @@ from crum import __version__
 extra = {}
 if sys.version_info >= (3,):
     extra['use_2to3'] = True
-    #extra['convert_2to3_doctests'] = ['src/your/module/README.txt']
-    #extra['use_2to3_fixers'] = ['your.fixers']
+    # extra['convert_2to3_doctests'] = ['src/your/module/README.txt']
+    # extra['use_2to3_fixers'] = ['your.fixers']
 
 setup(
     name='django-crum',
@@ -50,6 +50,8 @@ setup(
         'Framework :: Django',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
@@ -58,6 +60,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',

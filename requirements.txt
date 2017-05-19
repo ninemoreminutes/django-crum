@@ -4,53 +4,56 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-
-alabaster==0.7.8          # via sphinx
+alabaster==0.7.10         # via sphinx
 appnope==0.1.0            # via ipython
-babel==2.3.4              # via sphinx
+babel==2.4.0              # via sphinx
 backports.shutil-get-terminal-size==1.0.0  # via ipython
-click==6.6                # via pip-tools
-coverage==4.1             # via pytest-cov
-decorator==4.0.10         # via ipython, traitlets
-django-debug-toolbar==1.4
-django-extensions==1.6.7
-django==1.9.7
-djangorestframework==3.3.3
-docutils==0.12            # via sphinx
+click==6.7                # via pip-tools
+configparser==3.5.0       # via flake8
+coverage==4.4.1           # via pytest-cov
+decorator==4.0.11         # via ipython, traitlets
+django-debug-toolbar==1.8
+django-extensions==1.7.9
+django==1.11.1
+djangorestframework==3.6.3
+docutils==0.13.1          # via sphinx
+enum34==1.1.6             # via flake8, traitlets
 first==2.0.1              # via pip-tools
-flake8==2.5.4
-gnureadline==6.3.3        # via ipython
+flake8==3.3.0
 imagesize==0.7.1          # via sphinx
-ipython-genutils==0.1.0   # via traitlets
-ipython==4.2.0
-Jinja2==2.8               # via sphinx
-MarkupSafe==0.23          # via jinja2
-mccabe==0.4.0             # via flake8
-pathlib2==2.1.0           # via pickleshare
-pep8==1.7.0               # via flake8
-pexpect==4.1.0            # via ipython
-pickleshare==0.7.2        # via ipython
-pip-tools==1.6.5
-pluggy==0.3.1             # via tox
+ipython-genutils==0.2.0   # via traitlets
+ipython==5.3.0
+jinja2==2.9.6             # via sphinx
+markupsafe==1.0           # via jinja2
+mccabe==0.6.1             # via flake8
+pathlib2==2.2.1           # via ipython, pickleshare
+pep8==1.7.0
+pexpect==4.2.1            # via ipython
+pickleshare==0.7.4        # via ipython
+pip-tools==1.9.0
+pluggy==0.4.0             # via tox
+prompt-toolkit==1.0.14    # via ipython
 ptyprocess==0.5.1         # via pexpect
-py==1.4.31                # via pytest, tox
-pyflakes==1.0.0           # via flake8
-Pygments==2.1.3           # via sphinx
-pytest-cov==2.2.1
-pytest-django==2.9.1
-pytest-flake8==0.5
-pytest-runner==2.8
-pytest==2.9.2
-pytz==2016.4              # via babel
+py==1.4.33                # via pytest, tox
+pycodestyle==2.3.1        # via flake8
+pyflakes==1.5.0           # via flake8
+pygments==2.2.0           # via ipython, sphinx
+pytest-cov==2.5.1
+pytest-django==3.1.2
+pytest-flake8==0.8.1
+pytest-runner==2.11.1
+pytest==3.0.7
+pytz==2017.2              # via babel, django
+requests==2.14.2          # via sphinx
+scandir==1.5              # via pathlib2
 simplegeneric==0.8.1      # via ipython
-six==1.10.0               # via django-extensions, pathlib2, pip-tools, sphinx
+six==1.10.0               # via django-extensions, pathlib2, pip-tools, prompt-toolkit, sphinx, traitlets
 snowballstemmer==1.2.1    # via sphinx
-sphinx==1.4.3
-sqlparse==0.1.19          # via django-debug-toolbar
-tox==2.3.1
-traitlets==4.2.1          # via ipython
-virtualenv==15.0.2        # via tox
-
-# The following packages are commented out because they are
-# considered to be unsafe in a requirements file:
-# setuptools                # via ipython
+sphinx==1.6.1
+sphinxcontrib-websupport==1.0.1  # via sphinx
+sqlparse==0.2.3           # via django-debug-toolbar
+tox==2.7.0
+traitlets==4.3.2          # via ipython
+typing==3.6.1             # via sphinx
+virtualenv==15.1.0        # via tox
+wcwidth==0.1.7            # via prompt-toolkit
