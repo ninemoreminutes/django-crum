@@ -6,35 +6,38 @@
 #
 alabaster==0.7.10         # via sphinx
 appnope==0.1.0            # via ipython
-babel==2.4.0              # via sphinx
+babel==2.5.0              # via sphinx
 backports.shutil-get-terminal-size==1.0.0  # via ipython
+certifi==2017.7.27.1      # via requests
+chardet==3.0.4            # via requests
 click==6.7                # via pip-tools
 configparser==3.5.0       # via flake8
 coverage==4.4.1           # via pytest-cov
-decorator==4.0.11         # via ipython, traitlets
+decorator==4.1.2          # via ipython, traitlets
 django-debug-toolbar==1.8
-django-extensions==1.7.9
-django==1.11.1
+django-extensions==1.8.1
+django==1.11.4
 djangorestframework==3.6.3
-docutils==0.13.1          # via sphinx
+docutils==0.14            # via sphinx
 enum34==1.1.6             # via flake8, traitlets
 first==2.0.1              # via pip-tools
-flake8==3.3.0
+flake8==3.4.1
+idna==2.6                 # via requests
 imagesize==0.7.1          # via sphinx
 ipython-genutils==0.2.0   # via traitlets
-ipython==5.3.0
+ipython==5.4.1
 jinja2==2.9.6             # via sphinx
 markupsafe==1.0           # via jinja2
 mccabe==0.6.1             # via flake8
-pathlib2==2.2.1           # via ipython, pickleshare
+pathlib2==2.3.0           # via ipython, pickleshare
 pep8==1.7.0
 pexpect==4.2.1            # via ipython
 pickleshare==0.7.4        # via ipython
 pip-tools==1.9.0
 pluggy==0.4.0             # via tox
-prompt-toolkit==1.0.14    # via ipython
-ptyprocess==0.5.1         # via pexpect
-py==1.4.33                # via pytest, tox
+prompt-toolkit==1.0.15    # via ipython
+ptyprocess==0.5.2         # via pexpect
+py==1.4.34                # via pytest, tox
 pycodestyle==2.3.1        # via flake8
 pyflakes==1.5.0           # via flake8
 pygments==2.2.0           # via ipython, sphinx
@@ -42,18 +45,19 @@ pytest-cov==2.5.1
 pytest-django==3.1.2
 pytest-flake8==0.8.1
 pytest-runner==2.11.1
-pytest==3.0.7
+pytest==3.2.1
 pytz==2017.2              # via babel, django
-requests==2.14.2          # via sphinx
+requests==2.18.4          # via sphinx
 scandir==1.5              # via pathlib2
 simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via django-extensions, pathlib2, pip-tools, prompt-toolkit, sphinx, traitlets
 snowballstemmer==1.2.1    # via sphinx
-sphinx==1.6.1
+sphinx==1.6.3
 sphinxcontrib-websupport==1.0.1  # via sphinx
 sqlparse==0.2.3           # via django-debug-toolbar
 tox==2.7.0
 traitlets==4.3.2          # via ipython
-typing==3.6.1             # via sphinx
+typing==3.6.2             # via sphinx
+urllib3==1.22             # via requests
 virtualenv==15.1.0        # via tox
 wcwidth==0.1.7            # via prompt-toolkit
