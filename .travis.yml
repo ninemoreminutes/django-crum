@@ -2,3 +2,10 @@ language: python
 python: "3.6"
 install: make requirements
 script: make tox
+
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.5
