@@ -19,7 +19,7 @@ user, which could be helpful when using custom authentication methods or user
 models.
 
 It is tested against:
- * Django 1.8 (Python 2.7, 3.3, 3.4 and 3.5)
+ * Django 1.8 (Python 2.7, 3.4 and 3.5)
  * Django 1.9 (Python 2.7, 3.4 and 3.5)
  * Django 1.10 (Python 2.7, 3.4 and 3.5)
  * Django 1.11 (Python 2.7, 3.4, 3.5 and 3.6)
