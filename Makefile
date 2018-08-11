@@ -79,5 +79,5 @@ docs: requirements
 	python setup.py build_sphinx
 
 .PHONY: ship-it
-ship-it: clean-pyc
-	python setup.py release_build register upload upload_docs
+ship-it: requirements clean-pyc
+	python setup.py ship_it
