@@ -1,6 +1,7 @@
 [run]
 branch = True
 omit = 
+parallel = True
 
 [report]
 # Regexes for lines to exclude from consideration
