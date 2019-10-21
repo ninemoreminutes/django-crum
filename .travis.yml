@@ -3,7 +3,7 @@ python: '3.7'
 sudo: required
 dist: bionic
 install: make requirements
-script: make tox
+script: make tox-parallel
 
 addons:
   apt:
@@ -13,4 +13,4 @@ addons:
       - python3.4
       - python3.5
       - python3.8
-      - python3-distutils
+      - python3.8-distutils
