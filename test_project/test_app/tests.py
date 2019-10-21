@@ -13,7 +13,10 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from django.utils import six
+try:
+    from django.utils.six import binary_type, text_type
+except ImportError:
+    binary_type, text_type = bytes, str
 
 # Django-CRUM
 from crum import get_current_user, impersonate
@@ -46,7 +49,7 @@ class TestCRUM(TestCase):
         response = self.client.get(url)
         response_content = response.content.decode('utf-8')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type(self.user))
+        self.assertEqual(response_content, text_type(self.user))
         self.assertEqual(get_current_user(), None)
         # Test impersonate context manager.
         with impersonate(self.user):
@@ -58,7 +61,7 @@ class TestCRUM(TestCase):
         response = self.client.get(url + '?impersonate=1')
         response_content = response.content.decode('utf-8')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type(None))
+        self.assertEqual(response_content, text_type(None))
         self.assertEqual(get_current_user(), None)
         # Test when request raises exception.
         try:
@@ -75,7 +78,7 @@ class TestCRUM(TestCase):
         response = self.client.get(url)
         response_content = json.loads(response.content.decode('utf-8'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type('AnonymousUser'))
+        self.assertEqual(response_content, text_type('AnonymousUser'))
         self.assertEqual(get_current_user(), None)
         # Test logged in user (session auth).
         self.client.login(username=self.user.username,
@@ -83,18 +86,18 @@ class TestCRUM(TestCase):
         response = self.client.get(url)
         response_content = json.loads(response.content.decode('utf-8'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type(self.user))
+        self.assertEqual(response_content, text_type(self.user))
         self.assertEqual(get_current_user(), None)
         # Test logged in user (basic auth).
         basic_auth = '{0}:{1}'.format(self.user.username, self.user_password)
-        basic_auth = six.binary_type(basic_auth.encode('utf-8'))
+        basic_auth = binary_type(basic_auth.encode('utf-8'))
         basic_auth = base64.b64encode(basic_auth).decode('ascii')
         client_kwargs = {'HTTP_AUTHORIZATION': 'Basic %s' % basic_auth}
         client = Client(**client_kwargs)
         response = client.get(url)
         response_content = json.loads(response.content.decode('utf-8'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type(self.user))
+        self.assertEqual(response_content, text_type(self.user))
         self.assertEqual(get_current_user(), None)
         # Test impersonate(None) within view requested by logged in user.
         self.client.login(username=self.user.username,
@@ -102,7 +105,7 @@ class TestCRUM(TestCase):
         response = self.client.get(url + '?impersonate=1')
         response_content = json.loads(response.content.decode('utf-8'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response_content, six.text_type(None))
+        self.assertEqual(response_content, text_type(None))
         self.assertEqual(get_current_user(), None)
         # Test when request raises exception.
         try:

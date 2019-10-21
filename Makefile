@@ -1,10 +1,10 @@
 .PHONY: core-requirements
 core-requirements:
-	pip install "pip>=9" "setuptools>=20" "pip-tools>=1.9"
+	pip install pip setuptools pip-tools
 
 .PHONY: update-pip-requirements
 update-pip-requirements: core-requirements
-	pip install -U "pip>=9" "setuptools>=20" "pip-tools>=1.9"
+	pip install -U pip setuptools pip-tools
 	pip-compile --upgrade requirements.in
 
 .PHONY: requirements
@@ -15,6 +15,7 @@ requirements: core-requirements
 clean-pyc: requirements
 	find . -iname "*.pyc" -delete
 	find . -iname __pycache__ | xargs rm -rf
+	rm -rf .coverage
 
 .PHONY: develop
 develop: clean-pyc

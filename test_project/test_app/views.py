@@ -5,7 +5,10 @@ from __future__ import unicode_literals
 # Django
 from django.http import HttpResponse
 from django.views.generic.base import View
-from django.utils import six
+try:
+    from django.utils.six import text_type
+except ImportError:
+    text_type = str
 
 # Django-REST-Framework
 from rest_framework.response import Response
@@ -22,9 +25,9 @@ class IndexView(View):
             raise RuntimeError()
         if request.GET.get('impersonate', ''):
             with impersonate(None):
-                current_user = six.text_type(get_current_user())
+                current_user = text_type(get_current_user())
         else:
-            current_user = six.text_type(get_current_user())
+            current_user = text_type(get_current_user())
         return HttpResponse(current_user, content_type='text/plain')
 
 
@@ -45,9 +48,9 @@ class ApiIndexView(APIView):
             raise RuntimeError()
         if request.query_params.get('impersonate', ''):
             with impersonate(None):
-                current_user = six.text_type(get_current_user())
+                current_user = text_type(get_current_user())
         else:
-            current_user = six.text_type(get_current_user())
+            current_user = text_type(get_current_user())
         return Response(current_user)
 
 

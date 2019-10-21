@@ -9,8 +9,11 @@ from django.conf import global_settings
 # Update this module's local settings from the global settings module.
 this_module = sys.modules[__name__]
 for setting in dir(global_settings):
-    if setting == setting.upper():
-        setattr(this_module, setting, getattr(global_settings, setting))
+    if setting != setting.upper():
+        continue
+    if setting in ('PASSWORD_RESET_TIMEOUT_DAYS',):
+        continue
+    setattr(this_module, setting, getattr(global_settings, setting))
 
 # Absolute path to the directory containing this Django project.
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
