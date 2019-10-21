@@ -5,7 +5,7 @@ reports
 *.egg-info
 *.pyc
 *.pyo
-.coverage
+.coverage*
 .pytest_cache
 .tox
 *.sqlite3

@@ -59,6 +59,10 @@ clean-tox:
 tox: clean-pyc
 	tox
 
+.PHONY: tox-parallel
+tox-parallel: clean-pyc
+	tox -p all
+
 .PHONY: clean-all
 clean-all: clean-pyc clean-tox
 	rm -rf *.egg-info .eggs .cache .coverage build reports

@@ -2,6 +2,7 @@
 branch = True
 omit = 
 parallel = True
+data_file = .coverage${TOX_ENV_NAME}
 
 [report]
 # Regexes for lines to exclude from consideration
