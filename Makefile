@@ -15,7 +15,6 @@ requirements: core-requirements
 clean-pyc: requirements
 	find . -iname "*.pyc" -delete
 	find . -iname __pycache__ | xargs rm -rf
-	rm -rf .coverage
 
 .PHONY: develop
 develop: clean-pyc
@@ -54,6 +53,7 @@ test: clean-pyc
 .PHONY: clean-tox
 clean-tox:
 	rm -rf .tox
+	rm -rf .coveragepy*
 
 .PHONY: tox
 tox: clean-pyc
@@ -61,7 +61,7 @@ tox: clean-pyc
 
 .PHONY: tox-parallel
 tox-parallel: clean-pyc
-	tox -p all
+	tox -p auto
 
 .PHONY: clean-all
 clean-all: clean-pyc clean-tox
