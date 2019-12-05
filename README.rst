@@ -25,7 +25,8 @@ It is tested against:
  * Django 2.0 (Python 3.4, 3.5, 3.6 and 3.7)
  * Django 2.1 (Python 3.5, 3.6 and 3.7)
  * Django 2.2 (Python 3.5, 3.6, 3.7 and 3.8)
- * Django master/3.0 (Python 3.6, 3.7 and 3.8)
+ * Django 3.0 (Python 3.6, 3.7 and 3.8)
+ * Django master/3.1 (Python 3.6, 3.7 and 3.8)
 
 .. |Build Status| image:: http://img.shields.io/travis/ninemoreminutes/django-crum.svg
    :target: https://travis-ci.org/ninemoreminutes/django-crum
