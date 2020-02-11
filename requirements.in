@@ -1,7 +1,7 @@
 # Development/test environment uses Python 3.6.
 
 bumpversion
-django~=3.0.0
+django~=3.0.3
 django-debug-toolbar
 django-extensions
 djangorestframework
