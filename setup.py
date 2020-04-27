@@ -15,10 +15,9 @@ class BaseTwineCommand(Command):
         pass
 
     def run(self):
-        self.run_command('sdist')
-        self.get_finalized_command('sdist')
-        self.run_command('bdist_wheel')
-        self.get_finalized_command('bdist_wheel')
+        for sub_cmd in self.get_sub_commands():
+            self.run_command(sub_cmd)
+            self.get_finalized_command(sub_cmd)
         dist_files = [df[2] for df in self.distribution.dist_files]
         self.spawn(['twine', self.twine_subcommand] + dist_files)
 

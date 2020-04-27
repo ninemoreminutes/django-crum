@@ -4,14 +4,14 @@ from django.dispatch import Signal, receiver
 __all__ = ['current_user_getter']
 
 
-# Signal used when getting current user.  Receivers should return a tuple of
+# Signal used when getting current user. Receivers should return a tuple of
 # (user, priority).
-current_user_getter = Signal(providing_args=[])
+current_user_getter = Signal()
 
 
-# Signal used when setting current user.  Receivers should store the current
-# user as needed.  Return values are ignored.
-current_user_setter = Signal(providing_args=['user'])
+# Signal used when setting current user. Takes one keyword argument: 'user'.
+# Receivers should store the current user as needed. Return values are ignored.
+current_user_setter = Signal()
 
 
 @receiver(current_user_getter)

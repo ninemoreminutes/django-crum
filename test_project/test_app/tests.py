@@ -2,7 +2,10 @@
 from __future__ import with_statement
 from __future__ import unicode_literals
 import base64
-import imp
+try:
+    from importlib import reload as reload_module
+except ImportError:
+    from imp import reload as reload_module
 import json
 
 # Django
@@ -34,7 +37,7 @@ class TestCRUM(TestCase):
     def test_middleware(self):
         # For test coverage.
         import crum
-        imp.reload(crum)
+        reload_module(crum)
         # Test anonymous user.
         self.assertEqual(get_current_user(), None)
         url = reverse('test_app:index')
