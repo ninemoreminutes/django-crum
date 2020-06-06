@@ -6,7 +6,6 @@
 #
 alabaster==0.7.12         # via sphinx
 appdirs==1.4.3            # via virtualenv
-appnope==0.1.0            # via ipython
 asgiref==3.2.7            # via django
 attrs==19.3.0             # via pytest
 babel==2.8.0              # via sphinx
@@ -14,14 +13,16 @@ backcall==0.1.0           # via ipython
 bleach==3.1.4             # via readme-renderer
 bumpversion==0.5.3        # via -r requirements.in
 certifi==2020.4.5.1       # via requests
+cffi==1.14.0              # via cryptography
 chardet==3.0.4            # via requests
 click==7.1.1              # via pip-tools
 coverage==5.1             # via pytest-cov
+cryptography==2.9.2       # via secretstorage
 decorator==4.4.2          # via ipython, traitlets
 distlib==0.3.0            # via virtualenv
 django-debug-toolbar==2.2  # via -r requirements.in
 django-extensions==2.2.9  # via -r requirements.in
-django==3.0.5             # via -r requirements.in, django-debug-toolbar, djangorestframework
+django==3.0.7             # via -r requirements.in, django-debug-toolbar, djangorestframework
 djangorestframework==3.11.0  # via -r requirements.in
 docutils==0.16            # via readme-renderer, sphinx
 entrypoints==0.3          # via flake8
@@ -29,10 +30,10 @@ filelock==3.0.12          # via tox, virtualenv
 flake8==3.7.8             # via -r requirements.in, pytest-flake8
 idna==2.9                 # via requests
 imagesize==1.2.0          # via sphinx
-importlib-metadata==1.6.0  # via keyring, pluggy, pytest, tox, twine, virtualenv
 ipython-genutils==0.2.0   # via traitlets
 ipython==7.13.0           # via -r requirements.in
 jedi==0.17.0              # via ipython
+jeepney==0.4.3            # via keyring, secretstorage
 jinja2==2.11.2            # via sphinx
 keyring==21.2.0           # via twine
 markupsafe==1.1.1         # via jinja2
@@ -49,6 +50,7 @@ prompt-toolkit==3.0.5     # via ipython
 ptyprocess==0.6.0         # via pexpect
 py==1.8.1                 # via pytest, tox
 pycodestyle==2.5.0        # via -r requirements.in, flake8
+pycparser==2.20           # via cffi
 pyflakes==2.1.1           # via flake8
 pygments==2.6.1           # via ipython, readme-renderer, sphinx
 pyparsing==2.4.7          # via packaging
@@ -61,7 +63,8 @@ pytz==2019.3              # via babel, django
 readme-renderer==26.0     # via twine
 requests-toolbelt==0.9.1  # via twine
 requests==2.23.0          # via requests-toolbelt, sphinx, twine
-six==1.14.0               # via bleach, django-extensions, packaging, pip-tools, readme-renderer, tox, traitlets, virtualenv
+secretstorage==3.1.2      # via keyring
+six==1.14.0               # via bleach, cryptography, django-extensions, packaging, pip-tools, readme-renderer, tox, traitlets, virtualenv
 snowballstemmer==2.0.0    # via sphinx
 sphinx==3.0.3             # via -r requirements.in
 sphinxcontrib-applehelp==1.0.2  # via sphinx
@@ -80,7 +83,6 @@ urllib3==1.25.9           # via requests
 virtualenv==20.0.18       # via tox
 wcwidth==0.1.9            # via prompt-toolkit, pytest
 webencodings==0.5.1       # via bleach
-zipp==3.1.0               # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
