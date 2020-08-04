@@ -2,8 +2,8 @@
 core-requirements:
 	pip install pip setuptools pip-tools
 
-.PHONY: update-pip-requirements
-update-pip-requirements: core-requirements
+.PHONY: update-requirements
+update-requirements: core-requirements
 	pip install -U pip setuptools pip-tools
 	pip-compile --upgrade requirements.in
 

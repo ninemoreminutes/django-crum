@@ -19,15 +19,13 @@ user, which could be helpful when using custom authentication methods or user
 models.
 
 It is tested against:
- * Django 1.8 (Python 2.7, 3.4 and 3.5)
- * Django 1.9 (Python 2.7, 3.4 and 3.5)
- * Django 1.10 (Python 2.7, 3.4 and 3.5)
- * Django 1.11 (Python 2.7, 3.4, 3.5 and 3.6)
+ * Django 1.11 (Python 3.4, 3.5 and 3.6)
  * Django 2.0 (Python 3.4, 3.5, 3.6 and 3.7)
  * Django 2.1 (Python 3.5, 3.6 and 3.7)
  * Django 2.2 (Python 3.5, 3.6, 3.7 and 3.8)
  * Django 3.0 (Python 3.6, 3.7 and 3.8)
- * Django master/3.1 (Python 3.6, 3.7 and 3.8)
+ * Django 3.1 (Python 3.6, 3.7 and 3.8)
+ * Django master/3.2 (Python 3.6, 3.7 and 3.8)
 
 Installation
 ------------
@@ -36,15 +34,10 @@ Install the application from PYPI::
 
     pip install django-crum
 
-For Django 1.10 and newer, add ``CurrentRequestUserMiddleware`` to your
+Add ``CurrentRequestUserMiddleware`` to your
 ``MIDDLEWARE`` setting::
 
     MIDDLEWARE += ('crum.CurrentRequestUserMiddleware',)
-
-For Django 1.9 and older, add ``CurrentRequestUserMiddleware`` to your
-``MIDDLEWARE_CLASSES`` setting::
-
-    MIDDLEWARE_CLASSES += ('crum.CurrentRequestUserMiddleware',)
 
 *That's it!*
 

@@ -1,11 +1,8 @@
 # Django
-import django
 from django.conf import settings
 from django.conf.urls import include, url
 
 include_kwargs = dict(namespace='test_app')
-if django.VERSION < (1, 9):
-    include_kwargs['app_name'] = 'test_app'
 
 urlpatterns = [
     url(r'^test_app/', include('test_project.test_app.urls', **include_kwargs)),
