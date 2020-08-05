@@ -1,3 +1,6 @@
+PYTHON_MAJOR_MINOR := $(shell python -c "import sys; print('{0}{1}'.format(*sys.version_info))")
+REQUIREMENTS_TXT = requirements$(PYTHON_MAJOR_MINOR).txt
+
 .PHONY: core-requirements
 core-requirements:
 	pip install pip setuptools pip-tools
@@ -5,16 +8,20 @@ core-requirements:
 .PHONY: update-requirements
 update-requirements: core-requirements
 	pip install -U pip setuptools pip-tools
-	pip-compile --upgrade requirements.in
+	pip-compile -U requirements.in -o $(REQUIREMENTS_TXT)
 
 .PHONY: requirements
 requirements: core-requirements
-	pip-sync requirements.txt
+	pip-sync $(REQUIREMENTS_TXT)
 
 .PHONY: clean-pyc
 clean-pyc: requirements
 	find . -iname "*.pyc" -delete
 	find . -iname __pycache__ | xargs rm -rf
+
+.PHONY: tox-update-requirements
+tox-update-requirements: clean-pyc
+	tox -c tox-requirements.ini
 
 .PHONY: develop
 develop: clean-pyc
