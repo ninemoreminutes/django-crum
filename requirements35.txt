@@ -61,6 +61,7 @@ pytz==2020.4              # via babel, django
 readme-renderer==28.0     # via twine
 requests-toolbelt==0.9.1  # via twine
 requests==2.24.0          # via requests-toolbelt, sphinx, twine
+setuptools-twine==0.1.2   # via -r requirements.in
 six==1.15.0               # via bleach, packaging, pathlib2, pip-tools, prompt-toolkit, readme-renderer, tox, traitlets, virtualenv
 snowballstemmer==2.0.0    # via sphinx
 sphinx==3.3.0             # via -r requirements.in
@@ -76,7 +77,7 @@ tox-travis==0.12          # via -r requirements.in
 tox==3.20.1               # via -r requirements.in, tox-travis
 tqdm==4.51.0              # via twine
 traitlets==4.3.3          # via ipython
-twine==1.15.0             # via -r requirements.in
+twine==1.15.0             # via -r requirements.in, setuptools-twine
 urllib3==1.25.11          # via requests
 virtualenv==20.1.0        # via tox
 wcwidth==0.2.5            # via prompt-toolkit
