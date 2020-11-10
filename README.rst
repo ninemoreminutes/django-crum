@@ -1,4 +1,4 @@
-|Build Status| |Actions Status| |PyPI Version| |PyPI License| |Python Versions| |Django Versions| |Read the Docs|
+|Build Status| |PyPI Version| |PyPI License| |Python Versions| |Django Versions| |Read the Docs|
 
 Django-CRUM
 ===========
@@ -21,14 +21,12 @@ It is tested against:
  * Django 1.11 (Python 3.5 and 3.6)
  * Django 2.0 (Python 3.5, 3.6 and 3.7)
  * Django 2.1 (Python 3.5, 3.6 and 3.7)
- * Django 2.2 (Python 3.5, 3.6, 3.7 and 3.8)
- * Django 3.0 (Python 3.6, 3.7 and 3.8)
- * Django 3.1 (Python 3.6, 3.7 and 3.8)
- * Django master/3.2 (Python 3.6, 3.7 and 3.8)
+ * Django 2.2 (Python 3.5, 3.6, 3.7, 3.8 and 3.9)
+ * Django 3.0 (Python 3.6, 3.7, 3.8 and 3.9)
+ * Django 3.1 (Python 3.6, 3.7, 3.8 and 3.9)
+ * Django master/3.2 (Python 3.6, 3.7, 3.8 and 3.9)
 
-.. |Build Status| image:: http://img.shields.io/travis/ninemoreminutes/django-crum.svg
-   :target: https://travis-ci.org/ninemoreminutes/django-crum
-.. |Actions Status| image:: https://img.shields.io/github/workflow/status/ninemoreminutes/django-crum/test
+.. |Build Status| image:: https://img.shields.io/github/workflow/status/ninemoreminutes/django-crum/test
    :target: https://github.com/ninemoreminutes/django-crum/actions?query=workflow%3Atest
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/django-crum.svg
    :target: https://pypi.python.org/pypi/django-crum/

@@ -1,5 +1,5 @@
 PYTHON_MAJOR_MINOR := $(shell python -c "import sys; print('{0}{1}'.format(*sys.version_info))")
-REQUIREMENTS_TXT = requirements$(PYTHON_MAJOR_MINOR).txt
+REQUIREMENTS_TXT = requirements/dev$(PYTHON_MAJOR_MINOR).txt
 
 .PHONY: core-requirements
 core-requirements:
@@ -8,7 +8,7 @@ core-requirements:
 .PHONY: update-requirements
 update-requirements: core-requirements
 	pip install -U pip setuptools pip-tools
-	pip-compile -U requirements.in -o $(REQUIREMENTS_TXT)
+	pip-compile -U requirements/dev.in -o $(REQUIREMENTS_TXT)
 
 .PHONY: requirements
 requirements: core-requirements
@@ -21,7 +21,7 @@ clean-pyc: requirements
 
 .PHONY: tox-update-requirements
 tox-update-requirements: clean-pyc
-	tox -c tox-requirements.ini
+	tox -c requirements/tox.ini
 
 .PHONY: develop
 develop: clean-pyc
