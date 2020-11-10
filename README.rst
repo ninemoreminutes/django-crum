@@ -1,4 +1,4 @@
-|Build Status| |PyPI Version| |PyPI License| |Python Versions| |Django Versions| |Read the Docs|
+|Build Status| |Actions Status| |PyPI Version| |PyPI License| |Python Versions| |Django Versions| |Read the Docs|
 
 Django-CRUM
 ===========
@@ -28,6 +28,8 @@ It is tested against:
 
 .. |Build Status| image:: http://img.shields.io/travis/ninemoreminutes/django-crum.svg
    :target: https://travis-ci.org/ninemoreminutes/django-crum
+.. |Actions Status| image:: https://img.shields.io/github/workflow/status/ninemoreminutes/django-crum/test
+   :target: https://github.com/ninemoreminutes/django-crum/actions?query=workflow%3Atest
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/django-crum.svg
    :target: https://pypi.python.org/pypi/django-crum/
 .. |PyPI License| image:: https://img.shields.io/pypi/l/django-crum.svg
