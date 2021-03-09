@@ -24,7 +24,8 @@ It is tested against:
  * Django 2.2 (Python 3.5, 3.6, 3.7, 3.8 and 3.9)
  * Django 3.0 (Python 3.6, 3.7, 3.8 and 3.9)
  * Django 3.1 (Python 3.6, 3.7, 3.8 and 3.9)
- * Django main/3.2 (Python 3.6, 3.7, 3.8 and 3.9)
+ * Django 3.2 pre-release (Python 3.6, 3.7, 3.8 and 3.9)
+ * Django main/4.0 (Python 3.8 and 3.9)
 
 .. |Build Status| image:: https://img.shields.io/github/workflow/status/ninemoreminutes/django-crum/test
    :target: https://github.com/ninemoreminutes/django-crum/actions?query=workflow%3Atest
