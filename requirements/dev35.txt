@@ -28,9 +28,9 @@ chardet==4.0.0
     # via requests
 click==7.1.2
     # via pip-tools
-coverage==5.4
+coverage==5.5
     # via pytest-cov
-decorator==4.4.2
+decorator==5.0.5
     # via
     #   ipython
     #   traitlets
@@ -40,14 +40,14 @@ django-debug-toolbar==3.1.1
     # via -r requirements/dev.in
 django-extensions==3.1.0
     # via -r requirements/dev.in
-django==2.2.18
+django==2.2.20
     # via
     #   -r requirements/dev.in
     #   django-debug-toolbar
     #   djangorestframework
-djangorestframework==3.12.2
+djangorestframework==3.12.4
     # via -r requirements/dev.in
-docutils==0.16
+docutils==0.17
     # via
     #   readme-renderer
     #   sphinx
@@ -55,7 +55,7 @@ filelock==3.0.12
     # via
     #   tox
     #   virtualenv
-flake8==3.8.4
+flake8==3.9.0
     # via
     #   -r requirements/dev.in
     #   pytest-flake8
@@ -116,13 +116,13 @@ py==1.10.0
     # via
     #   pytest
     #   tox
-pycodestyle==2.6.0
+pycodestyle==2.7.0
     # via
     #   -r requirements/dev.in
     #   flake8
-pyflakes==2.2.0
+pyflakes==2.3.1
     # via flake8
-pygments==2.7.4
+pygments==2.8.1
     # via
     #   ipython
     #   readme-renderer
@@ -147,7 +147,7 @@ pytz==2021.1
     # via
     #   babel
     #   django
-readme-renderer==28.0
+readme-renderer==29.0
     # via twine
 requests-toolbelt==0.9.1
     # via twine
@@ -169,7 +169,7 @@ six==1.15.0
     #   virtualenv
 snowballstemmer==2.1.0
     # via sphinx
-sphinx==3.4.3
+sphinx==3.5.3
     # via -r requirements/dev.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
@@ -193,11 +193,11 @@ toml==0.10.2
     #   tox
 tox-gh-actions==2.4.0
     # via -r requirements/dev.in
-tox==3.21.4
+tox==3.23.0
     # via
     #   -r requirements/dev.in
     #   tox-gh-actions
-tqdm==4.56.0
+tqdm==4.60.0
     # via twine
 traitlets==4.3.3
     # via ipython
@@ -205,9 +205,9 @@ twine==1.15.0
     # via
     #   -r requirements/dev.in
     #   setuptools-twine
-urllib3==1.26.3
+urllib3==1.26.4
     # via requests
-virtualenv==20.4.2
+virtualenv==20.4.3
     # via tox
 wcwidth==0.2.5
     # via prompt-toolkit
