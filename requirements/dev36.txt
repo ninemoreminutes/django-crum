@@ -40,7 +40,7 @@ decorator==5.0.5
     #   traitlets
 distlib==0.3.1
     # via virtualenv
-django-debug-toolbar==3.2
+django-debug-toolbar==3.2.1
     # via -r requirements/dev.in
 django-extensions==3.1.2
     # via -r requirements/dev.in
