@@ -205,7 +205,7 @@ twine==1.15.0
     # via
     #   -r requirements/dev.in
     #   setuptools-twine
-urllib3==1.26.4
+urllib3==1.26.5
     # via requests
 virtualenv==20.4.3
     # via tox
