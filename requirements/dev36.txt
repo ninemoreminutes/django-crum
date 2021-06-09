@@ -44,7 +44,7 @@ django-debug-toolbar==3.2
     # via -r requirements/dev.in
 django-extensions==3.1.2
     # via -r requirements/dev.in
-django==3.2
+django==3.2.2
     # via
     #   -r requirements/dev.in
     #   django-debug-toolbar
