@@ -12,7 +12,7 @@ appnope==0.1.2
     # via ipython
 attrs==20.3.0
     # via pytest
-babel==2.9.0
+babel==2.9.1
     # via sphinx
 backcall==0.2.0
     # via ipython
