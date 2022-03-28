@@ -3,6 +3,8 @@ import contextlib
 import logging
 import threading
 
+from django.contrib.auth import get_user_model
+
 _thread_locals = threading.local()
 
 _logger = logging.getLogger('crum')
@@ -23,6 +25,16 @@ def impersonate(user=None):
         yield user
     finally:
         set_current_user(current_user)
+
+
+def impersonate_user(user=None):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            UserModel = get_user_model()
+            with impersonate(UserModel.objects.get(username=user)):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
 
 
 def get_current_request():
