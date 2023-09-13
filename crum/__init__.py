@@ -7,7 +7,7 @@ _thread_locals = threading.local()
 
 _logger = logging.getLogger('crum')
 
-__version__ = '0.7.9'
+__version__ = '0.8.0'
 
 __all__ = ['get_current_request', 'get_current_user', 'impersonate']
 

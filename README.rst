@@ -18,14 +18,14 @@ models.
 Documentation can be found at `RTFD <http://django-crum.readthedocs.io/>`_.
 
 It is tested against:
- * Django 1.11 (Python 3.5 and 3.6)
- * Django 2.0 (Python 3.5, 3.6 and 3.7)
- * Django 2.1 (Python 3.5, 3.6 and 3.7)
- * Django 2.2 (Python 3.5, 3.6, 3.7, 3.8 and 3.9)
- * Django 3.0 (Python 3.6, 3.7, 3.8 and 3.9)
- * Django 3.1 (Python 3.6, 3.7, 3.8 and 3.9)
- * Django 3.2 pre-release (Python 3.6, 3.7, 3.8 and 3.9)
- * Django main/4.0 (Python 3.8 and 3.9)
+ * Django 2.2 (Python 3.8 and 3.9)
+ * Django 3.0 (Python 3.8 and 3.9)
+ * Django 3.1 (Python 3.8 and 3.9)
+ * Django 3.2 (Python 3.8, 3.9 and 3.10)
+ * Django 4.0 (Python 3.8, 3.9 and 3.10)
+ * Django 4.1 (Python 3.8, 3.9, 3.10 and 3.11)
+ * Django 4.2 (Python 3.8, 3.9, 3.10 and 3.11)
+ * Django main (Python 3.10 and 3.11)
 
 .. |Build Status| image:: https://img.shields.io/github/workflow/status/ninemoreminutes/django-crum/test
    :target: https://github.com/ninemoreminutes/django-crum/actions?query=workflow%3Atest

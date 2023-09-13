@@ -1,4 +1,4 @@
-# Development/test environment uses Python 3.5 - 3.8 (separate requirements files generated for each).
+# Development/test environment uses Python 3.8 - 3.11 (separate requirements files generated for each).
 
 bumpversion
 django
