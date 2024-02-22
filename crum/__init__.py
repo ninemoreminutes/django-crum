@@ -1,9 +1,12 @@
 # Python
 import contextlib
 import logging
-import threading
+try:
+    from asgiref.local import Local as local
+except ImportError:
+    from threading import local
 
-_thread_locals = threading.local()
+_thread_locals = local()
 
 _logger = logging.getLogger('crum')
 
